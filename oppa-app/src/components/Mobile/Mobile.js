@@ -11,7 +11,6 @@ constructor(props){
     comission: 0,
     mobileRegex: /^5[0-9]*$/,
     amountRegex:  /^[0-9.]*$/,
-    error: 'incorrect amount',
   }
 }
 
@@ -27,20 +26,33 @@ onHandleNumberChange = e =>{
 onHandleAmountChange = e =>{
   let am = e.target.value;
   if(am === '' || new RegExp(this.state.amountRegex).test(am)){
+    let com = am*0.01
     this.setState({
       amount: am,
-      comission: am*0.01
-  })
+      comission: com > 0.5 ? com : 0.5,
+    })
   }
-
 }
+
+disableButton = () => {
+  const {number, amount} = this.state;
+  return !(number.length === 9 && !(amount>100 || amount<1 ))
+}
+
+handleClick = () => {
+  const {comission, amount} = this.state;
+  alert(`Your Balance is filled with ${amount-comission} GEL, Thank You!` );
+}
+
   render(){
-    const {number, amount, comission, error} = this.state;
+    const {number, amount, comission} = this.state;
      return (
         <div className="col-6">
           <MobileNumber onChange={this.onHandleNumberChange} number={number}/>
-          <Amount onChange={this.onHandleAmountChange} amount={amount} comission={comission} error={error}/>
-          <button>Fill</button>
+          <Amount onChange={this.onHandleAmountChange} amount={amount} comission={comission}/>
+          <div>{(amount && (amount>100 || amount<1 )) ? 'incorrect amount' : ''}</div> 
+          <div>Commission: {comission}</div>
+          <button type="button" disabled={this.disableButton()} onClick={this.handleClick}>Fill Balance</button>
         </div>
     )
   }
