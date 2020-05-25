@@ -1,5 +1,7 @@
 import React from 'react'
 import MobileNumber from './../Inputs/MobileNumber'
+import FillButton from './../FillButton/FillButton'
+import Comission from './../Comission/Comission'
 import Amount from './../Inputs/Amount'
 
 class Mobile extends React.Component{
@@ -51,8 +53,8 @@ handleClick = () => {
           <MobileNumber onChange={this.onHandleNumberChange} number={number}/>
           <Amount onChange={this.onHandleAmountChange} amount={amount} comission={comission}/>
           <div>{(amount && (amount>100 || amount<1 )) ? 'incorrect amount' : ''}</div> 
-          <div>Commission: {comission}</div>
-          <button type="button" disabled={this.disableButton()} onClick={this.handleClick}>Fill Balance</button>
+          <Comission comission={comission}/>
+          <FillButton disabled={this.disableButton()} onClick={this.handleClick}/>
         </div>
     )
   }
