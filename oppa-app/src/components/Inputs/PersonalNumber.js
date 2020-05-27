@@ -1,9 +1,9 @@
 import React from 'react'
 
-const PersonalNumber = ()=>{
-    return(
+const PersonalNumber = ({ onChange, personalNumber }) => {
+    return (
         <div>
-            <input type="text"/>
+            PersonalNumber Number: <input type="text" value={personalNumber} onChange={onChange} maxLength="11" />
         </div>
     )
 }

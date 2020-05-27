@@ -18,7 +18,7 @@ export default class Routes extends Component {
                     <Route path="/" exact component={Home} />
                     <Route path="/Mobile" component={Mobile} />
                     <Route path="/Utility" component={Utility} />
-                    <Route path="/Cherity" component={Cherity} />
+                    <Route path="/Cherity" component={Utility} />
                     <Route path="/Finances" component={Finances} />
                 </Switch>
             </Router>

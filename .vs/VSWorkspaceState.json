@@ -1,8 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\oppa-app"
+    "\\oppa-app",
+    "\\oppa-app\\src",
+    "\\oppa-app\\src\\components",
+    "\\oppa-app\\src\\components\\Inputs",
+    "\\oppa-app\\src\\components\\Mobile"
   ],
-  "SelectedNode": "\\oppa-app",
+  "SelectedNode": "\\oppa-app\\src\\components\\Mobile\\Mobile.js",
   "PreviewInSolutionExplorer": false
 }
