@@ -1,9 +1,9 @@
 import React from 'react'
 
-const AccountNumber = ()=>{
-    return(
+const AccountNumber = ({ onChange, accountNumber }) => {
+    return (
         <div>
-            <input type="text"/>
+            Account Number: <input type="text" value={accountNumber} onChange={onChange} maxLength="22" placeholder="GE00XX0000000000000000"/>
         </div>
     )
 }

@@ -61,7 +61,7 @@ class Utility extends React.Component {
     render() {
         const { number, amount, comission, personalNumber } = this.state;
         return (
-            <div className="col-6">
+            <div className="form-container">
                 <PersonalNumber onChange={this.onHandlePersonalNumberChange} personalNumber={personalNumber} />
                 <MobileNumber onChange={this.onHandleNumberChange} number={number} />
                 <Amount onChange={this.onHandleAmountChange} amount={amount} comission={comission} />
