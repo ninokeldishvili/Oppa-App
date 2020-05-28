@@ -75,14 +75,19 @@ class Finances extends React.Component {
     render() {
         const { number, amount, comission, personalNumber, accountNumber } = this.state;
         return (
-            <div className="form-container">
+            <div className="form-container col-lg-6 col-sm-12">
                 <AccountNumber onChange={this.onHandleAccountNumberChange} accountNumber={accountNumber} />
+                <hr />
                 <PersonalNumber onChange={this.onHandlePersonalNumberChange} personalNumber={personalNumber} />
+                <hr />
                 <MobileNumber onChange={this.onHandleNumberChange} number={number} />
+                <hr />
                 <Amount onChange={this.onHandleAmountChange} amount={amount} comission={comission} />
-                <div>{(amount && (amount > 100 || amount < 1)) ? 'incorrect amount' : ''}</div>
+                <hr />
                 <Comission comission={comission} />
+                <hr />
                 <FillButton disabled={this.disableButton()} onClick={this.handleClick} />
+                <div>{(amount && (amount > 100 || amount < 1)) ? 'incorrect amount' : ''}</div>
             </div>
         )
     }

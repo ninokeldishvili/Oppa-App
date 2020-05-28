@@ -49,12 +49,15 @@ class Mobile extends React.Component {
     render() {
         const { number, amount, comission } = this.state;
         return (
-            <div className="form-container">
+            <div className="form-container col-lg-6 col-sm-12">
                 <MobileNumber onChange={this.onHandleNumberChange} number={number} />
+                <hr />
                 <Amount onChange={this.onHandleAmountChange} amount={amount} comission={comission} />
-                <div>{(amount && (amount > 100 || amount < 1)) ? 'incorrect amount' : ''}</div>
+                <hr />
                 <Comission comission={comission} />
+                <hr />
                 <FillButton disabled={this.disableButton()} onClick={this.handleClick} />
+                {(amount && (amount > 100 || amount < 1)) ? '*incorrect amount' : ''}
             </div>
         )
     }
