@@ -6,7 +6,7 @@ const Tile = ({ name, goTo }) => {
   return (
     <div className="col-md-6">
       <div className="tile">
-        <Link to={goTo} className="section-name">
+        <Link to={goTo} className="mtavruli section-name">
           {name}
         </Link>
       </div>

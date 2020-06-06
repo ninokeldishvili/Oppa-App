@@ -5,29 +5,26 @@ import Comission from "../components/Comission";
 import Amount from "../components/Inputs/Amount";
 
 class Mobile extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      number: "",
-      amount: "",
-      comission: 0,
-      mobileRegex: /^5[0-9]*$/,
-      amountRegex: /^[0-9.]*$/
-    };
-  }
+  state = {
+    number: "",
+    amount: "",
+    comission: 0
+  };
 
-  onHandleNumberChange = e => {
+  handleNumberChange = e => {
     let number = e.target.value;
-    if (number === "" || new RegExp(this.state.mobileRegex).test(number)) {
+    const mobileRegex = /^5[0-9]*$/;
+    if (number === "" || new RegExp(mobileRegex).test(number)) {
       this.setState({
         number
       });
     }
   };
 
-  onHandleAmountChange = e => {
+  handleAmountChange = e => {
     let am = e.target.value;
-    if (am === "" || new RegExp(this.state.amountRegex).test(am)) {
+    const amountRegex = /^[0-9.]*$/;
+    if (am === "" || new RegExp(amountRegex).test(am)) {
       let com = am * 0.01;
       this.setState({
         amount: am,
@@ -48,15 +45,12 @@ class Mobile extends React.Component {
 
   render() {
     const { number, amount, comission } = this.state;
+
     return (
       <div className="form-container col-lg-6 mx-auto col-sm-12">
-        <MobileNumber onChange={this.onHandleNumberChange} number={number} />
+        <MobileNumber onChange={this.handleNumberChange} number={number} />
         <hr />
-        <Amount
-          onChange={this.onHandleAmountChange}
-          amount={amount}
-          comission={comission}
-        />
+        <Amount onChange={this.handleAmountChange} amount={amount} />
         <hr />
         <Comission comission={comission} />
         <hr />

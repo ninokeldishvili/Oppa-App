@@ -1,5 +1,5 @@
 .tile {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.8rem;
   text-align: center;
 }
 
@@ -8,12 +8,13 @@
   display: block;
   background: #51c871;
   color: #fff;
-  padding: 1rem;
+  padding: 1.4rem 1rem 1rem;
   font-size: 1.2rem;
   font-weight: 300;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  box-shadow: 2px 4px 0 darkcyan;
+  letter-spacing: 1px;
+  box-shadow: 2px 4px 0 darkcyan, 4px 7px 0 burlywood;
+  transition: 0.3s;
 }
 
 .section-name:hover {
@@ -24,6 +25,6 @@
 
 @media (min-width: 940px) {
   .section-name {
-    font-size: 1.4rem;
+    font-size: 1.32rem;
   }
 }

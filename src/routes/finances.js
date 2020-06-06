@@ -7,35 +7,30 @@ import PersonalNumber from "../components/Inputs/PersonalNumber";
 import AccountNumber from "../components/Inputs/AccountNumber";
 
 class Finances extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      number: "",
-      amount: "",
-      personalNumber: "",
-      accountNumber: "",
-      comission: 0,
-      mobileRegex: /^5[0-9]*$/,
-      amountRegex: /^[0-9.]*$/,
-      personalNumberRegex: /^[0-9]*$/,
-      accountNumberRegex: /^GE[0-9]{2}[A-Z]{2}[0-9]{16}$/
-    };
-  }
+  state = {
+    number: "",
+    amount: "",
+    personalNumber: "",
+    accountNumber: "",
+    comission: 0
+  };
 
-  onHandleNumberChange = e => {
+  handleNumberChange = e => {
     let number = e.target.value;
-    if (number === "" || new RegExp(this.state.mobileRegex).test(number)) {
+    const mobileRegex = /^5[0-9]*$/;
+    if (number === "" || new RegExp(mobileRegex).test(number)) {
       this.setState({
         number
       });
     }
   };
 
-  onHandlePersonalNumberChange = e => {
+  handlePersonalNumberChange = e => {
     let personalNumber = e.target.value;
+    const personalNumberRegex = /^[0-9]*$/;
     if (
       personalNumber === "" ||
-      new RegExp(this.state.personalNumberRegex).test(personalNumber)
+      new RegExp(personalNumberRegex).test(personalNumber)
     ) {
       this.setState({
         personalNumber
@@ -43,16 +38,17 @@ class Finances extends React.Component {
     }
   };
 
-  onHandleAccountNumberChange = e => {
+  handleAccountNumberChange = e => {
     let accountNumber = e.target.value;
     this.setState({
       accountNumber
     });
   };
 
-  onHandleAmountChange = e => {
+  handleAmountChange = e => {
     let am = e.target.value;
-    if (am === "" || new RegExp(this.state.amountRegex).test(am)) {
+    const amountRegex = /^[0-9.]*$/;
+    if (am === "" || new RegExp(amountRegex).test(am)) {
       let com = am * 0.01;
       this.setState({
         amount: am,
@@ -76,10 +72,9 @@ class Finances extends React.Component {
     alert(`Your Balance is filled with ${amount - comission} GEL, Thank You!`);
   };
 
-  validateAccountNumber = e => {
-    return new RegExp(this.state.accountNumberRegex).test(
-      this.state.accountNumber
-    );
+  validateAccountNumber = () => {
+    const accountNumberRegex = /^GE[0-9]{2}[A-Z]{2}[0-9]{16}$/;
+    return new RegExp(accountNumberRegex).test(this.state.accountNumber);
   };
 
   render() {
@@ -90,22 +85,23 @@ class Finances extends React.Component {
       personalNumber,
       accountNumber
     } = this.state;
+
     return (
-      <div className="form-container col-lg-6 col-sm-12">
+      <div className="form-container mx-auto col-lg-6 col-sm-12">
         <AccountNumber
-          onChange={this.onHandleAccountNumberChange}
+          onChange={this.handleAccountNumberChange}
           accountNumber={accountNumber}
         />
         <hr />
         <PersonalNumber
-          onChange={this.onHandlePersonalNumberChange}
+          onChange={this.handlePersonalNumberChange}
           personalNumber={personalNumber}
         />
         <hr />
-        <MobileNumber onChange={this.onHandleNumberChange} number={number} />
+        <MobileNumber onChange={this.handleNumberChange} number={number} />
         <hr />
         <Amount
-          onChange={this.onHandleAmountChange}
+          onChange={this.handleAmountChange}
           amount={amount}
           comission={comission}
         />
