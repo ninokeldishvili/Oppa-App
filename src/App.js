@@ -15,7 +15,7 @@ export default () => (
         <Route path="/mobile" component={Mobile} />
         <Route path="/utility" component={Utility} />
         <Route path="/finances" component={Finances} />
-        <Route path="/charity" render={charityroute} />
+        <Route path="/charity" render={charityRoute} />
       </Switch>
     </main>
   </Router>
@@ -27,7 +27,7 @@ const AppHeader = ({ title }) => (
   </h1>
 );
 
-const charityroute = () => (
+const charityRoute = () => (
   <h3 className="text-center">
     Charity <small>Coming Soon</small>
   </h3>
