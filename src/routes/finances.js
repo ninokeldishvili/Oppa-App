@@ -5,13 +5,14 @@ import Comission from "../components/Comission";
 import Amount from "../components/Inputs/Amount";
 import PersonalNumber from "../components/Inputs/PersonalNumber";
 import AccountNumber from "../components/Inputs/AccountNumber";
+import ErrorMessage from "../components/ErrorMessage";
 
 class Finances extends React.Component {
   state = {
     number: "",
     amount: "",
     personalNumber: "",
-    accountNumber: "",
+    accountNumber: "", // GE66CL6666666666666666
     comission: 0
   };
 
@@ -19,9 +20,7 @@ class Finances extends React.Component {
     let number = e.target.value;
     const mobileRegex = /^5[0-9]*$/;
     if (number === "" || new RegExp(mobileRegex).test(number)) {
-      this.setState({
-        number
-      });
+      this.setState({ number });
     }
   };
 
@@ -32,17 +31,13 @@ class Finances extends React.Component {
       personalNumber === "" ||
       new RegExp(personalNumberRegex).test(personalNumber)
     ) {
-      this.setState({
-        personalNumber
-      });
+      this.setState({ personalNumber });
     }
   };
 
   handleAccountNumberChange = e => {
     let accountNumber = e.target.value;
-    this.setState({
-      accountNumber
-    });
+    this.setState({ accountNumber });
   };
 
   handleAmountChange = e => {
@@ -100,11 +95,7 @@ class Finances extends React.Component {
         <hr />
         <MobileNumber onChange={this.handleNumberChange} number={number} />
         <hr />
-        <Amount
-          onChange={this.handleAmountChange}
-          amount={amount}
-          comission={comission}
-        />
+        <Amount onChange={this.handleAmountChange} amount={amount} />
         <hr />
         <Comission comission={comission} />
         <hr />
@@ -112,9 +103,9 @@ class Finances extends React.Component {
           disabled={this.disableButton()}
           onClick={this.handleClick}
         />
-        <div>
-          {amount && (amount > 100 || amount < 1) ? "incorrect amount" : ""}
-        </div>
+        {amount && (amount > 100 || amount < 1) && (
+          <ErrorMessage>*incorrect amount</ErrorMessage>
+        )}
       </div>
     );
   }

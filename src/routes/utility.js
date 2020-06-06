@@ -4,6 +4,7 @@ import FillButton from "../components/FillButton";
 import Comission from "../components/Comission";
 import Amount from "../components/Inputs/Amount";
 import PersonalNumber from "../components/Inputs/PersonalNumber";
+import ErrorMessage from "../components/ErrorMessage";
 
 class Utility extends React.Component {
   state = {
@@ -70,11 +71,7 @@ class Utility extends React.Component {
         <hr />
         <MobileNumber onChange={this.handleNumberChange} number={number} />
         <hr />
-        <Amount
-          onChange={this.handleAmountChange}
-          amount={amount}
-          comission={comission}
-        />
+        <Amount onChange={this.handleAmountChange} amount={amount} />
         <hr />
         <Comission comission={comission} />
         <hr />
@@ -82,9 +79,9 @@ class Utility extends React.Component {
           disabled={this.disableButton()}
           onClick={this.handleClick}
         />
-        <div>
-          {amount && (amount > 100 || amount < 1) ? "incorrect amount" : ""}
-        </div>
+        {amount && (amount > 100 || amount < 1) && (
+          <ErrorMessage>*incorrect amount</ErrorMessage>
+        )}
       </div>
     );
   }

@@ -3,6 +3,7 @@ import MobileNumber from "../components/Inputs/MobileNumber";
 import FillButton from "../components/FillButton";
 import Comission from "../components/Comission";
 import Amount from "../components/Inputs/Amount";
+import ErrorMessage from "../components/ErrorMessage";
 
 class Mobile extends React.Component {
   state = {
@@ -15,9 +16,7 @@ class Mobile extends React.Component {
     let number = e.target.value;
     const mobileRegex = /^5[0-9]*$/;
     if (number === "" || new RegExp(mobileRegex).test(number)) {
-      this.setState({
-        number
-      });
+      this.setState({ number });
     }
   };
 
@@ -58,7 +57,9 @@ class Mobile extends React.Component {
           disabled={this.disableButton()}
           onClick={this.handleClick}
         />
-        {amount && (amount > 100 || amount < 1) ? "*incorrect amount" : ""}
+        {amount && (amount > 100 || amount < 1) && (
+          <ErrorMessage>*incorrect amount</ErrorMessage>
+        )}
       </div>
     );
   }
