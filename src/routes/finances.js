@@ -82,7 +82,7 @@ class Finances extends React.Component {
     } = this.state;
 
     return (
-      <div className="form-container mx-auto col-lg-6 col-sm-12">
+      <div className="form-container mx-auto col-lg-7">
         <AccountNumber
           onChange={this.handleAccountNumberChange}
           accountNumber={accountNumber}

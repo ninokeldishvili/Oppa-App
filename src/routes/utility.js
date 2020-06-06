@@ -63,7 +63,7 @@ class Utility extends React.Component {
     const { number, amount, comission, personalNumber } = this.state;
 
     return (
-      <div className="form-container mx-auto col-lg-6 col-sm-12">
+      <div className="form-container mx-auto col-lg-7">
         <PersonalNumber
           onChange={this.handlePersonalNumberChange}
           personalNumber={personalNumber}

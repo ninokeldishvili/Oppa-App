@@ -3,12 +3,12 @@ import React from "react";
 const Amount = ({ onChange, amount }) => {
   return (
     <div className="row input-group">
-      <label className="col-lg-4 col-sm-12 inputLabel" htmlFor="amount">
+      <label className="col-md-4 inputLabel" htmlFor="amount">
         Amount:
       </label>
       <input
         id="amount"
-        className="col-lg-8 col-sm-12 inputBox"
+        className="col-md-8 inputBox"
         value={amount}
         onChange={onChange}
       />

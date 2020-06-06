@@ -3,12 +3,12 @@ import React from "react";
 const PersonalNumber = ({ onChange, personalNumber }) => {
   return (
     <div className="row input-group">
-      <label className="col-lg-4 col-sm-12 inputLabel" htmlFor="perosnalNum">
+      <label className="col-md-4 inputLabel" htmlFor="perosnalNum">
         ID Number:
       </label>
       <input
         id="perosnalNum"
-        className="col-lg-8 col-sm-12 inputBox"
+        className="col-md-8 inputBox"
         value={personalNumber}
         onChange={onChange}
         maxLength="11"

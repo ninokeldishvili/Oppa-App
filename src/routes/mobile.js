@@ -46,7 +46,7 @@ class Mobile extends React.Component {
     const { number, amount, comission } = this.state;
 
     return (
-      <div className="form-container col-lg-6 mx-auto col-sm-12">
+      <div className="form-container col-lg-6 mx-auto">
         <MobileNumber onChange={this.handleNumberChange} number={number} />
         <hr />
         <Amount onChange={this.handleAmountChange} amount={amount} />

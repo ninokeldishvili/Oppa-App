@@ -4,14 +4,14 @@ const AccountNumber = ({ onChange, accountNumber }) => {
   return (
     <div className="row input-group">
       <label
-        className="col-lg-4 col-sm-12 inputLabel"
+        className="col-md-4 inputLabel"
         title="Account Number"
         htmlFor="accNum"
       >
         Acc. Number:
       </label>
       <input
-        className="col-lg-8 col-sm-12 inputBox"
+        className="col-md-8 inputBox"
         id="accNum"
         value={accountNumber}
         onChange={onChange}
