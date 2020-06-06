@@ -1,26 +1,29 @@
-.tile{
-    background: #51c871;
-    height: 251px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    border-radius: 33px;
-    position: relative;
+.tile {
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
-.tile:hover{
-    background: #4db168;
-    cursor:pointer;
+.section-name {
+  border-radius: 33px;
+  display: block;
+  background: #51c871;
+  color: #fff;
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 2px 4px 0 darkcyan;
 }
 
-.section-name{
-    color: #fff;
-    font-size: 2rem;
-    font-family: auto;  
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 30%;
-    margin: auto;
+.section-name:hover {
+  background: #4db168;
+  cursor: pointer;
+  color: #fff;
+}
+
+@media (min-width: 940px) {
+  .section-name {
+    font-size: 1.4rem;
+  }
 }

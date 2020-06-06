@@ -1,18 +1,34 @@
-import React from 'react';
-import './App.css';
-import { BrowserRouter as Router } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Home from "./routes/home";
+import Mobile from "./routes/mobile";
+import Utility from "./routes/utility";
+import Finances from "./routes/finances";
 
-import Routes from './components/Routes/Routes';
-function App() {
+export default function App() {
   return (
     <Router>
-      <div className="App container">
-      <h1>Navigation here</h1>
-      <h1>Oppa</h1>
-        <Routes />
-      </div>
+      <>
+        <AppHeader title="Oppa" />
+
+        <main className="container">
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/mobile" component={Mobile} />
+            <Route path="/utility" component={Utility} />
+            <Route path="/finances" component={Finances} />
+            <Route path="/charity" render={charityroute} />
+          </Switch>
+        </main>
+      </>
     </Router>
   );
 }
 
-export default App;
+const AppHeader = ({ title }) => (
+  <h1 className="App-title">
+    <Link to="/">{title}</Link>
+  </h1>
+);
+
+const charityroute = () => <h3 className="col-6 mx-auto">Charity</h3>;
