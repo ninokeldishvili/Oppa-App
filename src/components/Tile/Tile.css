@@ -1,0 +1,30 @@
+.tile {
+  margin-bottom: 1.8rem;
+  text-align: center;
+}
+
+.section-name {
+  border-radius: 33px;
+  display: block;
+  background: #51c871;
+  color: #fff;
+  padding: 1.4rem 1rem 1rem;
+  font-size: 1.1rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 2px 4px 0 darkcyan, 4px 7px 0 burlywood;
+  transition: 0.3s;
+}
+
+.section-name:hover {
+  background: #4db168;
+  cursor: pointer;
+  color: #fff;
+}
+
+@media (min-width: 940px) {
+  .section-name {
+    font-size: 1.3rem;
+  }
+}
