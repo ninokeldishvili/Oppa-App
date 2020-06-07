@@ -9,7 +9,7 @@
   background: #51c871;
   color: #fff;
   padding: 1.4rem 1rem 1rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -25,6 +25,6 @@
 
 @media (min-width: 940px) {
   .section-name {
-    font-size: 1.32rem;
+    font-size: 1.3rem;
   }
 }

@@ -1,8 +1,7 @@
 import React from "react";
-import MobileNumber from "../components/Inputs/MobileNumber";
-import FillButton from "../components/FillButton";
-import Comission from "../components/Comission";
-import Amount from "../components/Inputs/Amount";
+import Input from "../components/Input";
+import Button from "../components/Button";
+import ComissionRow from "../components/ComissionRow";
 import ErrorMessage from "../components/ErrorMessage";
 
 class Mobile extends React.Component {
@@ -46,16 +45,23 @@ class Mobile extends React.Component {
     const { number, amount, comission } = this.state;
 
     return (
-      <div className="form-container col-lg-6 mx-auto">
-        <MobileNumber onChange={this.handleNumberChange} number={number} />
-        <hr />
-        <Amount onChange={this.handleAmountChange} amount={amount} />
-        <hr />
-        <Comission comission={comission} />
-        <hr />
-        <FillButton
-          disabled={this.disableButton()}
+      <div className="form-container col-lg-7 col-md-10 mx-auto">
+        <Input
+          value={number}
+          onChange={this.handleNumberChange}
+          label="Mobile Number"
+          maxLength="9"
+        />
+        <Input
+          value={amount}
+          onChange={this.handleAmountChange}
+          label="Amount"
+        />
+        <ComissionRow value={comission} />
+        <Button
+          isDisabled={this.disableButton()}
           onClick={this.handleClick}
+          children="Fill Balance"
         />
         {amount && (amount > 100 || amount < 1) && (
           <ErrorMessage>*incorrect amount</ErrorMessage>

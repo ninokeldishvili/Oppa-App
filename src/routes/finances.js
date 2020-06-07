@@ -1,10 +1,7 @@
 import React from "react";
-import MobileNumber from "../components/Inputs/MobileNumber";
-import FillButton from "../components/FillButton";
-import Comission from "../components/Comission";
-import Amount from "../components/Inputs/Amount";
-import PersonalNumber from "../components/Inputs/PersonalNumber";
-import AccountNumber from "../components/Inputs/AccountNumber";
+import Button from "../components/Button";
+import Input from "../components/Input";
+import ComissionRow from "../components/ComissionRow";
 import ErrorMessage from "../components/ErrorMessage";
 
 class Finances extends React.Component {
@@ -83,25 +80,36 @@ class Finances extends React.Component {
 
     return (
       <div className="form-container mx-auto col-lg-7">
-        <AccountNumber
+        <Input
+          value={accountNumber}
           onChange={this.handleAccountNumberChange}
-          accountNumber={accountNumber}
+          label="Acc. Number"
+          title="Account Number"
+          maxLength="22"
+          placeholder="GE00XX0000000000000000"
         />
-        <hr />
-        <PersonalNumber
+        <Input
+          value={personalNumber}
           onChange={this.handlePersonalNumberChange}
-          personalNumber={personalNumber}
+          label="ID Number"
+          maxLength="11"
         />
-        <hr />
-        <MobileNumber onChange={this.handleNumberChange} number={number} />
-        <hr />
-        <Amount onChange={this.handleAmountChange} amount={amount} />
-        <hr />
-        <Comission comission={comission} />
-        <hr />
-        <FillButton
-          disabled={this.disableButton()}
+        <Input
+          value={number}
+          onChange={this.handleNumberChange}
+          label="Mobile Number"
+          maxLength="9"
+        />
+        <Input
+          value={amount}
+          onChange={this.handleAmountChange}
+          label="Amount"
+        />
+        <ComissionRow value={comission} />
+        <Button
+          isDisabled={this.disableButton()}
           onClick={this.handleClick}
+          children="Fill Balance"
         />
         {amount && (amount > 100 || amount < 1) && (
           <ErrorMessage>*incorrect amount</ErrorMessage>
