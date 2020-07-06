@@ -16,3 +16,7 @@
 .fillBtn:hover {
   background: #4db168;
 }
+
+.fillBtn:focus{
+  outline:none;
+}
