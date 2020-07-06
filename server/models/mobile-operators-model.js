@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let MobileOperator = new Schema({
-    mobile_number: {
+    number: {
         type: String
     },
     amount: {
