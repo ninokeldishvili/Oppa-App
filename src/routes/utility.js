@@ -3,31 +3,32 @@ import Input from "../components/Input";
 import Button from "../components/Button";
 import Comission from "../components/ComissionRow";
 import ErrorMessage from "../components/ErrorMessage";
+import axios from "axios";
 
 class Utility extends React.Component {
   state = {
-    number: "",
+    mobile_number: "",
     amount: "",
-    personalNumber: "",
+    id_number: "",
     comission: 0
   };
 
   handleNumberChange = e => {
-    let number = e.target.value;
+    let mobile_number = e.target.value;
     const mobileRegex = /^5[0-9]*$/;
-    if (number === "" || new RegExp(mobileRegex).test(number)) {
-      this.setState({ number });
+    if (mobile_number === "" || new RegExp(mobileRegex).test(mobile_number)) {
+      this.setState({ mobile_number });
     }
   };
 
   handlePersonalNumberChange = e => {
-    let personalNumber = e.target.value;
-    const personalNumberRegex = /^[0-9]*$/;
+    let id_number = e.target.value;
+    const id_numberRegex = /^[0-9]*$/;
     if (
-      personalNumber === "" ||
-      new RegExp(personalNumberRegex).test(personalNumber)
+      id_number === "" ||
+      new RegExp(id_numberRegex).test(id_number)
     ) {
-      this.setState({ personalNumber });
+      this.setState({ id_number });
     }
   };
 
@@ -44,32 +45,50 @@ class Utility extends React.Component {
   };
 
   disableButton = () => {
-    const { number, amount, personalNumber } = this.state;
+    const { mobile_number, amount, id_number } = this.state;
     return !(
-      number.length === 9 &&
-      personalNumber.length === 11 &&
+      mobile_number.length === 9 &&
+      id_number.length === 11 &&
       !(amount > 100 || amount < 1)
     );
   };
 
-  handleClick = () => {
-    const { comission, amount } = this.state;
+  onSubmit = () => {
+    const { mobile_number, amount, comission, id_number } = this.state;
+
+    let payUtility = {
+      id_number,
+      mobile_number,
+      amount, 
+      comission, 
+    }
+
+    axios.post('http://localhost:4000/pay-utility', payUtility)
+         .then(res=> console.log(res.data))
+
     alert(`Your Balance is filled with ${amount - comission} GEL, Thank You!`);
+
+    this.setState({
+      id_number: '',
+      mobile_number: '',
+      amount: '', 
+      comission: 0, 
+    })
   };
 
   render() {
-    const { number, amount, comission, personalNumber } = this.state;
+    const { mobile_number, amount, comission, id_number } = this.state;
 
     return (
       <div className="form-container mx-auto col-lg-7">
         <Input
-          value={personalNumber}
+          value={id_number}
           onChange={this.handlePersonalNumberChange}
           label="ID Number"
           maxLength="11"
         />
         <Input
-          value={number}
+          value={mobile_number}
           onChange={this.handleNumberChange}
           label="Mobile Number"
           maxLength="9"
@@ -83,7 +102,7 @@ class Utility extends React.Component {
         <Button
           children="Fill Balance"
           isDisabled={this.disableButton()}
-          onClick={this.handleClick}
+          onClick={this.onSubmit}
         />
         {amount && (amount > 100 || amount < 1) && (
           <ErrorMessage>*incorrect amount</ErrorMessage>

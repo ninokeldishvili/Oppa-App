@@ -6,7 +6,8 @@ const mongoose = require('mongoose');
 const routes = express.Router();
 const PORT = 4000;
 
-let MobileOperator = require('./models/mobile-operators-model')
+let MobileOperator = require('./models/mobile-operators-model');
+let Utility = require('./models/utility-model');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -25,7 +26,16 @@ routes.route('/fill-mobile').post(function(req,res){
                   .catch(err=>{
                       res.status(400).send('failed, this is Oppa, Remember?');
                   })
-                })
+});
+
+routes.route('/pay-utility').post(function(req,res){
+    let utility = new Utility(req.body);
+    utility.save()
+            .then(utility=>res.status(200).json({'utility':'success'}))
+            .catch(err=>{
+                res.status(400).send('failed');
+            })
+});
 
 app.use('/', routes)
 app.listen(PORT,function(){
