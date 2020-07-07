@@ -8,6 +8,7 @@ const PORT = 4000;
 
 let MobileOperator = require('./models/mobile-operators-model');
 let Utility = require('./models/utility-model');
+let Finance = require('./models/finances-model');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -31,11 +32,20 @@ routes.route('/fill-mobile').post(function(req,res){
 routes.route('/pay-utility').post(function(req,res){
     let utility = new Utility(req.body);
     utility.save()
-            .then(utility=>res.status(200).json({'utility':'success'}))
-            .catch(err=>{
+            .then(utility => res.status(200).json({'utility':'success'}))
+            .catch(err => {
                 res.status(400).send('failed');
             })
 });
+
+routes.route('/pay-finances').post(function(req,res){
+    let finance = new Finance(req.body);
+    finance.save()
+            then(finance => res.status(200).json({'finance':'success'}))
+            .catch(err => {
+                res.status(400).send('failed');
+            })
+})
 
 app.use('/', routes)
 app.listen(PORT,function(){
