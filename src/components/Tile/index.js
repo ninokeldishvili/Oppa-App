@@ -1,5 +1,5 @@
 import React from "react";
-import "./tile.css";
+import "./Tile.css";
 import { Link } from "react-router-dom";
 
 const Tile = ({ name, goTo }) => {
